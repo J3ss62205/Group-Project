@@ -4,6 +4,9 @@ import java.util.*;
 public class HotelManager {
 
 	Scanner scnr = new Scanner(System.in);
+
+	ArrayList<RegularRoom> regular = new ArrayList<RegularRoom>();
+	ArrayList<LuxuryRoom> luxury = new ArrayList<LuxuryRoom>();
 	
 	int num;
 	int num1;
@@ -11,8 +14,6 @@ public class HotelManager {
 	int luxRoom;
 	int length;
 	
-	ArrayList<RegularRoom> regular = new ArrayList<RegularRoom>(regRoom);
-	ArrayList<LuxuryRoom> luxury = new ArrayList<LuxuryRoom>(luxRoom);
 	
 	public HotelManager() {
 		System.out.println("NAMES: JESSICA HENRY AND KAI DECKER");
@@ -27,7 +28,7 @@ public class HotelManager {
 		//This gets the number of luxury rooms at their hotel
 		
 		length = regRoom + luxRoom;	
-		
+	
 	}
 	
 	public void RegBook(String newName, int people) {
@@ -72,6 +73,23 @@ public class HotelManager {
 		System.out.println("There are " + luxRoom + " available luxury rooms");
 	}
 	
+	public void removeRegRoom(int x) {
+		regular.remove(x);
+	}
+	
+	public void removeLuxRoom(int x) {
+		luxury.remove(x);
+	}
+	
+	public void addRegRoom() {
+		regular.add(new RegularRoom());
+		regRoom++;
+	}
+	
+	public void addLuxRoom() {
+		luxury.add(new LuxuryRoom());
+		luxRoom++;
+	}
 	
 	public int getRegIndex(String newName) { 
 		for (RegularRoom i : regular) {
