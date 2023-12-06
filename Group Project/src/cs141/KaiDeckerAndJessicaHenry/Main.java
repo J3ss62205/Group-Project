@@ -2,7 +2,15 @@ package cs141.KaiDeckerAndJessicaHenry;
 import java.util.*;
 
 public class Main {
-	
+//	0: Create a Booking -----FIX ARRAY
+//	1: Remove a Booking ---- FIX ARRAY
+//	2: Update Rooms Information ---FIX ARRAY
+//	3: Find Someone in the System ---- HELPPPPPPPPPPP
+//	4: Check Availbity ----- DONE
+//	5: Remove a Room -----FIX ARRAY
+//	6: Add a Room ------- FIX ARRAY
+//	7: Print Out All or Open Rooms ------------ NOT DONE
+//	8: Quit ----------DONE
 
 	public static void main(String[] args) {
 		Scanner scnr = new Scanner(System.in);
@@ -115,11 +123,41 @@ public class Main {
 					//This prints out the available rooms
 					break;
 				case 5:
+					System.out.println("Was your booking a luxury or a regular room?");
+					System.out.println("1: Regular");
+					System.out.println("2: Luxury");
+					room = scnr.nextInt();
 					
-					
+					if (room == 1) {
+						System.out.println("What is the name under the booking: ");
+						String name1 = scnr.nextLine();
+						//This gets their name
+						
+						int index = hotel.getRegIndex(name1);
+						hotel.removeRegRoom(index);
+					}
+					else if (room == 2) {
+						System.out.println("What is the name under the booking: ");
+						String name2 = scnr.nextLine();
+						//This gets their name
+						
+						int index = hotel.getLuxIndex(name2);
+						hotel.removeLuxRoom(index);
+					}
 					break;
-				case 6:
 					
+				case 6:
+					System.out.println("Would you like to add a luxury or a regular room?");
+					System.out.println("1: Regular");
+					System.out.println("2: Luxury");
+					room = scnr.nextInt();
+					
+					if (room == 1) {						
+						hotel.addRegRoom();
+					}
+					else if (room == 2) {
+						hotel.addLuxRoom();
+					}
 					
 					break;
 				case 7:
@@ -128,7 +166,8 @@ public class Main {
 			}
 			
 			
-		} while (choice != 8);	
+		} while (choice != 8);
+
 	}
 
 }
