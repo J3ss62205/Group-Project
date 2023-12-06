@@ -5,8 +5,8 @@ public class HotelManager {
 
 	Scanner scnr = new Scanner(System.in);
 
-	ArrayList<RegularRoom> regular = new ArrayList<RegularRoom>();
-	ArrayList<LuxuryRoom> luxury = new ArrayList<LuxuryRoom>();
+	ArrayList<RegularRoom> regular;
+	ArrayList<LuxuryRoom> luxury;
 	
 	int num;
 	int num1;
@@ -28,6 +28,21 @@ public class HotelManager {
 		//This gets the number of luxury rooms at their hotel
 		
 		length = regRoom + luxRoom;	
+
+		
+		regular = new ArrayList<RegularRoom>(regRoom);
+		//regular.ensureCapacity(10);
+		for(int i = 0; i < regRoom; i++)
+		{
+			regular.add(new RegularRoom());
+		}
+		luxury = new ArrayList<LuxuryRoom>(luxRoom);
+		
+		for(int i = 0; i < luxRoom; i++)
+		{
+			luxury.add(new LuxuryRoom());
+		}
+		
 	
 	}
 	
