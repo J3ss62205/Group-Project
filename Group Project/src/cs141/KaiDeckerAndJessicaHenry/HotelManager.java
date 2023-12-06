@@ -1,38 +1,57 @@
 package cs141.KaiDeckerAndJessicaHenry;
 import java.util.*;
 
-import cs141.jlhenry2.Employee;
-
 public class HotelManager {
-	
-	ArrayList<RegularRoom> regular = new ArrayList<RegularRoom>();
-	ArrayList<LuxuryRoom> luxury = new ArrayList<LuxuryRoom>();
+
+	Scanner scnr = new Scanner(System.in);
 	
 	int num;
 	int num1;
+	int regRoom;
+	int luxRoom;
+	int length;
+	
+	ArrayList<RegularRoom> regular = new ArrayList<RegularRoom>(regRoom);
+	ArrayList<LuxuryRoom> luxury = new ArrayList<LuxuryRoom>(luxRoom);
 	
 	public HotelManager() {
+		System.out.println("NAMES: JESSICA HENRY AND KAI DECKER");
+		System.out.println("------------ Welcome to the Hotel Management System ------------ ");
+		
+		System.out.println("How many Regular Rooms does your hotel have?");
+		regRoom = scnr.nextInt();
+		//This gets the number of regular rooms at their hotel
+		
+		System.out.println("How many Luxury Rooms does your hotel have?");
+		luxRoom = scnr.nextInt();
+		//This gets the number of luxury rooms at their hotel
+		
+		length = regRoom + luxRoom;	
 		
 	}
 	
 	public void RegBook(String newName, int people) {
 		regular.get(num).createBooking(newName, people);
 		num++;
+		regRoom--;
 	}
 	
 	public void LuxBook(String newName, int people) {
 		luxury.get(num1).createBooking(newName, people);
 		num1++;
+		luxRoom--;
 	}
 	
 	public void removeRegBook(int i) {
 		regular.get(i).removeBooking();
 		num--;
+		regRoom++;
 	}
 	
 	public void removeLuxBook(int i) {
 		luxury.get(i).removeBooking();
 		num1--;
+		luxRoom++;
 	}
 	
 	public void updateRegRoom(int i) {
@@ -43,14 +62,15 @@ public class HotelManager {
 		luxury.get(i).updateRoom();
 	}
 	
-	public void findSomeoneInReg(int i) {
-		regular.get(i).HHHHHHHHhh();
-	}
+	public void findSomeone(String newName) {
+		getRegIndex(newName);
+		getLuxIndex(newName);
+	}//THIS NEEDS TO BE DONE
 	
-	public void findSomeoneInLux(int i) {
-		luxury.get(i).HHHHHHHHhh();
+	public void checkAvailbity() {
+		System.out.println("There are " + regRoom + " available regular rooms");
+		System.out.println("There are " + luxRoom + " available luxury rooms");
 	}
-	
 	
 	
 	public int getRegIndex(String newName) { 
