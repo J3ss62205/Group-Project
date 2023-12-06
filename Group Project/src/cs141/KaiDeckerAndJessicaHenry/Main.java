@@ -7,22 +7,9 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scnr = new Scanner(System.in);
 		int choice;
-		int RegRoom;
-		int LuxRoom;
 		int room;
 		
 		HotelManager hotel = new HotelManager();
-		
-		System.out.println("NAMES: JESSICA HENRY AND KAI DECKER");
-		System.out.println("------------ Welcome to the Hotel Management System ------------ ");
-		
-		System.out.println("How many Regular Rooms does your hotel have?");
-		RegRoom = scnr.nextInt();
-		//This gets the number of regular rooms at their hotel
-		
-		System.out.println("How many Luxury Rooms does your hotel have?");
-		LuxRoom = scnr.nextInt();
-		//This gets the number of luxury rooms at their hotel
 		
 		do {
 			System.out.println("0: Create a Booking");
@@ -49,6 +36,7 @@ public class Main {
 					if (room == 1) {
 						System.out.println("What is the name you'd like to book with: ");
 						String name = scnr.nextLine();
+						scnr.next();
 						System.out.println("What is the number of people in your room: ");
 						int people = scnr.nextInt();
 						hotel.RegBook(name, people);
@@ -119,15 +107,15 @@ public class Main {
 					System.out.println("What is the name of the person you're looking for: ");
 					String name = scnr.nextLine();
 					
-					int j = hotel.getLuxIndex(name);
-					int i = hotel.getRegIndex(name);
-					
+					hotel.findSomeone(name);
 					
 					break;
 				case 4:
-					
+					hotel.checkAvailbity();
+					//This prints out the available rooms
 					break;
 				case 5:
+					
 					
 					break;
 				case 6:
@@ -140,14 +128,7 @@ public class Main {
 			}
 			
 			
-		} while (choice != 8);
-		
-		
-		
-		
-		
-		
-	
+		} while (choice != 8);	
 	}
 
 }
