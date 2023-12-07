@@ -37,12 +37,13 @@ public class Main {
 					System.out.println("1: Regular");
 					System.out.println("2: Luxury");
 					room = scnr.nextInt();
+					scnr.nextLine();
 					//The user will choose what room type they want 
 					
 					if (room == 1) {
 						System.out.println("What is the name you'd like to book with: ");
 						String name = scnr.nextLine();
-						scnr.next();
+//						System.out.println(name);
 						System.out.println("What is the number of people in your room: ");
 						int people = scnr.nextInt();
 						hotel.RegBook(name, people);
@@ -51,7 +52,6 @@ public class Main {
 					else if (room == 2) {
 						System.out.println("What is the name you'd like to book with: ");
 						String name = scnr.nextLine();
-						scnr.next();
 						System.out.println("What is the number of people in your room: ");
 						int people = scnr.nextInt();
 						hotel.LuxBook(name, people);
@@ -64,6 +64,7 @@ public class Main {
 					System.out.println("1: Regular");
 					System.out.println("2: Luxury");
 					room = scnr.nextInt();
+					scnr.nextLine();
 					//The user will choose what room type they booked with 
 					
 					if (room == 1) {
@@ -93,6 +94,7 @@ public class Main {
 					System.out.println("1: Regular");
 					System.out.println("2: Luxury");
 					room = scnr.nextInt();
+					scnr.nextLine();
 					
 					if (room == 1) {
 						System.out.println("What is the name you booked with: ");
@@ -133,6 +135,7 @@ public class Main {
 					System.out.println("1: Regular");
 					System.out.println("2: Luxury");
 					room = scnr.nextInt();
+					scnr.nextLine();
 					
 					if (room == 1) {
 						System.out.println("What is the name under the booking: ");
@@ -159,6 +162,7 @@ public class Main {
 					System.out.println("1: Regular");
 					System.out.println("2: Luxury");
 					room = scnr.nextInt();
+					scnr.nextLine();
 					
 					if (room == 1) {						
 						hotel.addRegRoom();
@@ -175,6 +179,7 @@ public class Main {
 					System.out.println("1: All");
 					System.out.println("2: Open");
 					room = scnr.nextInt();
+					scnr.nextLine();
 					
 					if (room == 1) {						
 						hotel.printAll();
