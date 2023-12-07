@@ -1,6 +1,7 @@
 package cs141.KaiDeckerAndJessicaHenry;
 import java.util.*;
 //Name: Jessica Henry
+//Description: 
 
 
 public class Main {
@@ -68,6 +69,7 @@ public class Main {
 					if (room == 1) {
 						System.out.println("What is the name you booked with: ");
 						String name = scnr.nextLine();
+						scnr.next();
 						//This gets their name
 
 						int index = hotel.getRegIndex(name);
@@ -77,6 +79,7 @@ public class Main {
 					else if (room == 2) {
 						System.out.println("What is the name you booked with: ");
 						String name = scnr.nextLine();
+						scnr.next();
 						//This gets their name
 						
 						int index = hotel.getLuxIndex(name);
