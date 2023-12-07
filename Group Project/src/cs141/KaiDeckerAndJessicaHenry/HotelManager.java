@@ -101,7 +101,7 @@ public class HotelManager {
 		for (RegularRoom i : regular) {
 			if (i.getName().equals(newName)){
 				System.out.println("");
-				System.out.println("This person is section REGULAR");
+				System.out.println("This person is section REGULAR in room " + i.getRoomNumber());
 				System.out.println("");
 				//If they are found within the first array then it will tell you the persons 
 				//section and set found to true
@@ -111,7 +111,7 @@ public class HotelManager {
 		for (LuxuryRoom i : luxury) {
 			if (i.getName().equals(newName)){
 				System.out.println("");
-				System.out.println("This person is section LUXURY");
+				System.out.println("This person is section in room " + i.getRoomNumber());
 				System.out.println("");
 				//If they are found within the second array then it will tell you the persons 
 				//section and set found to true
