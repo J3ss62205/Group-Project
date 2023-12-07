@@ -54,7 +54,7 @@ public class RegularRoom extends Room
 	{
 		// Set values for variables to empty.
 		booked = false;
-		roomName = "";
+		roomName = "None";
 		occupants = 0;
 	}
 
@@ -221,11 +221,12 @@ public class RegularRoom extends Room
 	
 	public static void removeRoom() 
 	{
+		// Remove 1 from the total amount of rooms of this class available.
 		numRooms--;
 	}
 	public void printOpen()
 	{
-		if(roomName.equals(""))
+		if(roomName.equals("None"))
 		{
 			System.out.println("\n***********************************");
 			this.print();
