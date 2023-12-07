@@ -34,7 +34,7 @@ public class RegularRoom extends Room
 
 	public RegularRoom()
 	{
-		roomName = "";
+		roomName = "None";
 		occupants = 0;		
 		numRooms++;
 		roomNumber = numRooms;
@@ -207,6 +207,11 @@ public class RegularRoom extends Room
 		{
 			System.out.println("\nThe value entered for the room number was incorrect.\n");
 		}
+	
+	}
+	public String getRoomName()
+	{
+		return roomName;
 	}
 	public int getRoomNumber()
 	{
@@ -214,9 +219,13 @@ public class RegularRoom extends Room
 	} 
 	public void print()
 	{
+		// Display information about the room.
+		System.out.println("\n***********************************");
 		System.out.println("The name of the room is: " + roomName + '.');
+		System.out.println("The section of the hotel is: " + roomType);
 		System.out.println("The room number is: " + roomNumber + '.');
 		System.out.println("The number of occupants in the room is: " + occupants + '.');
+		System.out.println("\n***********************************");
 	}
 	
 	public static void removeRoom() 
