@@ -167,7 +167,6 @@ public class Main {
 			
 			
 		} while (choice != 8);
-
 	}
 
 }
