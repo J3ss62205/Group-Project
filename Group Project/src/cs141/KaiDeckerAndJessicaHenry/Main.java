@@ -50,6 +50,7 @@ public class Main {
 					else if (room == 2) {
 						System.out.println("What is the name you'd like to book with: ");
 						String name = scnr.nextLine();
+						scnr.next();
 						System.out.println("What is the number of people in your room: ");
 						int people = scnr.nextInt();
 						hotel.LuxBook(name, people);
