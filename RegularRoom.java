@@ -67,6 +67,7 @@ public class RegularRoom extends Room
 		System.out.println("Enter 3 to update all of the room's information");
 		
 		int i = scnr.nextInt();
+		scnr.nextLine();
 		
 		if (i == menu.name.ordinal()+ 1)
 		{
@@ -87,6 +88,7 @@ public class RegularRoom extends Room
 			try {
 				System.out.print("Enter the new amount of occupants for the room: ");
 				occupants = scnr.nextInt();
+				scnr.nextLine();
 				error = false;
 			}
 			catch (Exception e)
@@ -112,6 +114,7 @@ public class RegularRoom extends Room
 							
 			try {
 				occupants = scnr.nextInt();
+				scnr.nextLine();
 				error = false;
 				}
 			catch (Exception e)
@@ -180,6 +183,7 @@ public class RegularRoom extends Room
 			System.out.println("Reenter the number of occupants you would wish to assign the room.");
 			System.out.print("The room number must be positive: ");
 			occ = scnr.nextInt();
+			scnr.nextLine();
 		}
 		occupants = occ;
 	}
@@ -200,6 +204,7 @@ public class RegularRoom extends Room
 			System.out.println("Re-enter the room number you would wish to assign the room.");
 			System.out.print("The room number must be positive: ");
 			num = scnr.nextInt();
+			scnr.nextLine();
 		}
 		roomNumber = num;
 		}
