@@ -23,7 +23,7 @@ public class Main {
 			System.out.println("1: Remove a Booking");
 			System.out.println("2: Update Rooms Information");
 			System.out.println("3: Find Someone in the System");
-			System.out.println("4: Check Availbity");
+			System.out.println("4: Check Availability");
 			System.out.println("5: Remove a Room");
 			System.out.println("6: Add a Room");
 			System.out.println("7: Print Out All or Open Rooms");
@@ -32,6 +32,11 @@ public class Main {
 			
 			choice = scnr.nextInt();
 			scnr.nextLine();
+			if(choice > 8 || choice < 0) {
+				System.out.println("Please enter a vaild number");
+				choice = scnr.nextInt();
+				scnr.nextLine();
+			}//This makes it so that you enter a 0-8 number 
 			//This gets the users input
 			
 			switch(choice){
