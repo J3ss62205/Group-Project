@@ -1,5 +1,9 @@
 package cs141.KaiDeckerAndJessicaHenry;
 import java.util.*;
+// Name: Jessica Henry
+//
+//Description: This will call methods from both the regular room and luxury room classes 
+// and on top of that it can find someone and find the index of someone
 
 public class HotelManager {
 
@@ -7,12 +11,15 @@ public class HotelManager {
 
 	ArrayList<RegularRoom> regular;
 	ArrayList<LuxuryRoom> luxury;
+	//These are our arrays
 	
 	int num;
 	int num1;
 	int regRoom;
 	int luxRoom;
 	int length;
+	boolean found = false;
+	//Variables yayyyyyyyyyy
 	
 	
 	public HotelManager() {
@@ -77,9 +84,29 @@ public class HotelManager {
 	}
 	
 	public void findSomeone(String newName) {
-		getRegIndex(newName);
-		getLuxIndex(newName);
-	}//THIS NEEDS TO BE DONE
+		for (RegularRoom i : regular) {
+			if (i.getName().equals(newName)){
+				System.out.println();
+				System.out.println(newName + " is section REGULAR and in the room number " + i);
+				System.out.println();
+				found = true;
+			}
+		}
+		for (LuxuryRoom i : luxury) {
+			if (i.getName().equals(newName)){
+				System.out.println();
+				System.out.println(newName +" is section LUXURY and in the room number " + i);
+				System.out.println();
+				found = true;
+			}
+		}
+		if (found == false) {
+			System.out.println();
+			System.out.println("This person is not staying at our hotel");
+			System.out.println();
+		}
+		found = false;
+	}
 	
 	public void checkAvailbity() {
 		System.out.println("There are " + regRoom + " available regular rooms");
@@ -88,10 +115,12 @@ public class HotelManager {
 	
 	public void removeRegRoom(int x) {
 		regular.remove(x);
+		regular.removeRoom();
 	}
 	
 	public void removeLuxRoom(int x) {
 		luxury.remove(x);
+		luxury.removeRoom();
 	}
 	
 	public void addRegRoom() {
@@ -102,6 +131,33 @@ public class HotelManager {
 	public void addLuxRoom() {
 		luxury.add(new LuxuryRoom());
 		luxRoom++;
+	}
+	
+	public void printOpen() {
+		System.out.println("");
+		System.out.println("The Following Are Open Regular Rooms: ");
+		for (RegularRoom i : regular) {
+			regular.printOpen();
+		}
+		System.out.println("");
+		System.out.println("The Following Are Open Luxury Rooms: ");
+		for (LuxuryRoom i : luxury) {
+			luxury.printOpen();
+		}
+	}
+	
+	public void printAll() {
+		System.out.println("");
+		System.out.println("The Following Are Regular Rooms: ");
+		for (RegularRoom i : regular) {
+			regular.print();
+		}
+		System.out.println("");
+		System.out.println("The Following Are Luxury Rooms: ");
+		for (LuxuryRoom i : luxury) {
+			luxury.print();
+		}
+		//This will call the print methods for both types of rooms and print them!
 	}
 	
 	public int getRegIndex(String newName) { 
@@ -123,7 +179,4 @@ public class HotelManager {
 		//This gets the index of a person for a luxury room
 		return 0;
 	}
-	
-	
-
 }
