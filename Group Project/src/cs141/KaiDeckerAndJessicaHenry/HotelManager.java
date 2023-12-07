@@ -1,6 +1,7 @@
 package cs141.KaiDeckerAndJessicaHenry;
 import java.util.*;
 // Name: Jessica Henry
+// Class: HotelManager
 //
 //Description: This will call methods from both the regular room and luxury room classes 
 // and on top of that it can find someone and find the index of someone
@@ -47,7 +48,7 @@ public class HotelManager {
 		for(int i = 0; i < luxRoom; i++)
 		{
 			luxury.add(new LuxuryRoom());
-		}
+		}//This will make it so the regular and luxury rooms get added in the array lists
 	
 	}
 	
@@ -55,33 +56,33 @@ public class HotelManager {
 		regular.get(num).createBooking(newName, people);
 		num++;
 		regRoom--;
-	}
+	}//This makes it so we can book regular rooms 
 	
 	public void LuxBook(String newName, int people) {
 		luxury.get(num1).createBooking(newName, people);
 		num1++;
 		luxRoom--;
-	}
+	}//This makes it so we can book luxury rooms
 	
 	public void removeRegBook(int i) {
 		regular.get(i).removeBooking();
 		num--;
 		regRoom++;
-	}
+	}//This makes it so we can remove bookings of regular rooms
 	
 	public void removeLuxBook(int i) {
 		luxury.get(i).removeBooking();
 		num1--;
 		luxRoom++;
-	}
+	}//This makes it so we can remove bookings of luxury rooms
 	
 	public void updateRegRoom(int i) {
 		regular.get(i).updateRoom();
-	}
+	}//This makes it so we can update regular rooms information
 	
 	public void updateLuxRoom(int i) {
 		luxury.get(i).updateRoom();
-	}
+	}//This makes it so we can update luxury rooms information 
 	
 	public void findSomeone(String newName) {
 		for (RegularRoom i : regular) {
@@ -89,6 +90,8 @@ public class HotelManager {
 				System.out.println("");
 				System.out.println("This person is section REGULAR");
 				System.out.println("");
+				//If they are found within the first array then it will tell you the persons 
+				//section and set found to true
 				found = true;
 			}
 		}
@@ -97,6 +100,8 @@ public class HotelManager {
 				System.out.println("");
 				System.out.println("This person is section LUXURY");
 				System.out.println("");
+				//If they are found within the second array then it will tell you the persons 
+				//section and set found to true
 				found = true;
 			}
 		}
@@ -104,8 +109,10 @@ public class HotelManager {
 			System.out.println();
 			System.out.println("This person is not staying at our hotel");
 			System.out.println();
+			//If they are not found it will tell you that they aren't staying here
 		}
 		found = false;
+		//after all of that we set found to false again
 	}
 	
 	public void checkAvailbity() {
@@ -113,52 +120,55 @@ public class HotelManager {
 		System.out.println("There are " + regRoom + " available regular rooms");
 		System.out.println("There are " + luxRoom + " available luxury rooms");
 		System.out.println("*************************************************");
+		//This will tell you the avaiable rooms
 	}
 	
 	public void removeRegRoom() {
 		regular.remove(regRoom);
 		RegularRoom.removeRoom();
 		regRoom--;
-	}
+	}//This will remove a room for the regular array list
 	
 	public void removeLuxRoom() {
 		luxury.remove(luxRoom);
 		LuxuryRoom.removeRoom();
 		luxRoom--;
-	}
+	}//This will remove a room for the luxury array list
 	
 	public void addRegRoom() {
 		regular.add(new RegularRoom());
 		regRoom++;
-	}
+	}//This will add a regular room to the array list
 	
 	public void addLuxRoom() {
 		luxury.add(new LuxuryRoom());
 		luxRoom++;
-	}
+	}//This will add a luxury room to the array list
 	
 	public void printOpen() {
 		System.out.println("");
 		System.out.println("The Following Are Open Regular Rooms: ");
-		for (RegularRoom i : regular) {
+		for (RegularRoom i : regular) { //the loop makes it so that it goes though the whole list
 			i.printOpen();
+			//This calls the print open method from the regular room 
 		}
 		System.out.println("");
 		System.out.println("The Following Are Open Luxury Rooms: ");
-		for (LuxuryRoom i : luxury) {
+		for (LuxuryRoom i : luxury) { //the loop makes it so that it goes though the whole list
 			i.printOpen();
+			//this calls the print open method from the luxury room
 		}
 	}
 	
 	public void printAll() {
 		System.out.println("");
 		System.out.println("The Following Are Regular Rooms: ");
-		for (RegularRoom i : regular) {
+		for (RegularRoom i : regular) { //the loop makes it so that it goes though the whole list
 			i.print();
 		}
 		System.out.println("");
 		System.out.println("The Following Are Luxury Rooms: ");
-		for (LuxuryRoom i : luxury) {
+		for (LuxuryRoom i : luxury) { //the loop makes it so that it goes though the whole list
 			i.print();
 		}
 		//This will call the print methods for both types of rooms and print them!
