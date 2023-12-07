@@ -28,7 +28,6 @@ public class HotelManager {
 		//This gets the number of luxury rooms at their hotel
 		
 		length = regRoom + luxRoom;	
-
 		
 		regular = new ArrayList<RegularRoom>(regRoom);
 		//regular.ensureCapacity(10);
@@ -42,7 +41,6 @@ public class HotelManager {
 		{
 			luxury.add(new LuxuryRoom());
 		}
-		
 	
 	}
 	
