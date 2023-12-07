@@ -70,7 +70,6 @@ public class Main {
 					if (room == 1) {
 						System.out.println("What is the name you booked with: ");
 						String name = scnr.nextLine();
-						scnr.next();
 						//This gets their name
 
 						int index = hotel.getRegIndex(name);
