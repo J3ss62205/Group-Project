@@ -1,8 +1,8 @@
 ////
 //	Name: Kai Decker
-//	Class name: RegularRoom.
+//	Class name: LuxuryRoom.
 //
-//	Description: The RegularRoom defines the class of regular room used in the project.
+//	Description: The LuxuryRoom defines the class of luxury room used in the project.
 //	The class uses inheritance and error handling to provide a class that can be used in
 //	the algorithm.
 //
@@ -11,13 +11,16 @@
  * 
  */
 package cs141.KaiDeckerAndJessicaHenry;
+
 import java.util.Scanner;
+
+
 
 /**
  * 
  */
-public class RegularRoom extends Room
-{
+public class LuxuryRoom {
+		
 	Scanner scnr = new Scanner(System.in);
 
 	// Enumeration so that these can be used to allow a more readable menu in the update method.
@@ -33,13 +36,10 @@ public class RegularRoom extends Room
 	boolean booked = false; // Store whether the room is booked or not.
 	static int numRooms = 0; // Store the amount of rooms created.
 	int roomNumber = 0; // Store the room number for the room.
-	
 
-	// Constructor
-	
-	public RegularRoom()
+	public LuxuryRoom()
 	{
-	// assign values to the room upon creation
+		// assign values to the room upon creation
 		
 		roomName = "None"; // None means that there is no person in the room. 
 		occupants = 0;		
