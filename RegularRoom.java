@@ -24,23 +24,27 @@ public class RegularRoom extends Room
 	}
 
 	// Variables for use in project.
-	String Roomname; // name for the room
+	String roomName; // name for the room
 	final String roomType = "Regular"; // 
 	int occupants;
 	boolean booked = false;
-	int roomNum = 0;
-	static int numberOfRooms = 0;
+	static int roomNum = 0;
+	boolean error = false;
 
 	public RegularRoom()
 	{
-		numberOfRooms++;
+		roomName = "";
+		occupants = 0;
+		roomNum++;
 	}
 
 	public void createBooking(String name, int occ)
 	{
 		// Set values for variables.
-		this.Roomname = name;
-		this.occupants = occ;
+		
+		roomName = name;
+		occupants = occ;
+		error = false;
 		booked = true;
 	}
 
@@ -48,7 +52,7 @@ public class RegularRoom extends Room
 	{
 		// Set values for variables to empty.
 		booked = false;
-		Roomname = "";
+		roomName = "";
 		occupants = 0;
 	}
 
@@ -62,20 +66,57 @@ public class RegularRoom extends Room
 		
 		int i = scnr.nextInt();
 		
-		if (i == menu.name.ordinal())
+		if (i == menu.name.ordinal() + 1)
 		{
-		 System.out.print("Enter the new name for the room: ");
-		 this.Roomname = scnr.next();
+			try {
+				System.out.print("Enter the new name for the room: ");
+			roomName = scnr.next();
+				error = false;
+			}
+			catch (Exception e)
+			{
+				error = true;
+				System.out.println("\nThe name entered has incorrect values.\n");					
+			}
 		}
-		else if (i == menu.occupant.ordinal())
-		{
-			System.out.print("Enter the new amount of occupants for the room: ");
-			this.occupants = scnr.nextInt();
+		else if (i == menu.occupant.ordinal() + 1)
+		{ 
+				
+			try {
+				System.out.print("Enter the new amount of occupants for the room: ");
+				occupants = scnr.nextInt();
+				error = false;
+			}
+			catch (Exception e)
+			{
+				error = true;
+				System.out.println("\nThe number of occupants entered has incorrect values.\n");
+			}
 		}
-		else if (i == menu.all.ordinal())
+		else if (i == menu.all.ordinal() + 1)
 		{
-			System.out.print("Enter the new amount of occupants for the room: ");
-			this.occupants = scnr.nextInt();
+			try {
+				System.out.print("Enter the new name for the room: ");
+				roomName = scnr.nextLine();
+				error = false;
+			}
+			catch (Exception e)
+			{
+			error = true;
+			System.out.println("\nThe name entered has incorrect values.\n");
+			}
+				
+			
+							
+			try {
+				occupants = scnr.nextInt();
+				error = false;
+				}
+			catch (Exception e)
+			{
+				error = true;
+				System.out.println("The number of occupants input has incorrect values.");
+			}
 		}
 		
 		
@@ -89,33 +130,29 @@ public class RegularRoom extends Room
 			 System.out.print("User input is not acceptable.\nRe-enter(Y/N): ");
 			 pay = scnr.next();
 		 }
-		 
-		 if (pay.equalsIgnoreCase("y"))
-		 {
-			 return true;
+		 try {
+			 if (pay.equalsIgnoreCase("y"))
+			 {
+				 return true;
+			 }
+			 else if (pay.equalsIgnoreCase("n"))
+			 {
+				 return false;
+			 }
+			 else
+			 {
+				 System.out.println("The value input was incorrect.");
+				 return false;
+			 }
 		 }
-		 else if (pay.equalsIgnoreCase("n"))
+		 catch(Exception e)
 		 {
+			 System.out.println("Error. Incorrect data entered");
 			 return false;
 		 }
-		 else
-		 {
-			 System.out.println("The value input was incorrect.");
-			 return false;
-		 }
 	}
-	public static void addRoom()
-	{
-		numberOfRooms++;
-	}
-	public static void removeRoom()
-	{
-		numberOfRooms--;
-	}
-	public static int getNumOfRegularRooms()
-	{
-		return numberOfRooms;
-	}
+	
+	
 	public void setAvailability(boolean bool)
 	{
 		booked = bool;
@@ -126,15 +163,20 @@ public class RegularRoom extends Room
 	}
 	public void setName(String name)
 	{
-		Roomname = name;
+		roomName = name;
 	}
 	public void setOccupants(int occ)
 	{
+		while(occ < 0)
+		{
+			System.out.println("Reenter the number of occupants you would wish to assign the room.");
+			System.out.print("The room number must be positive: ");
+		}
 		occupants = occ;
 	}
 	public String getName()
 	{
-		return Roomname;
+		return roomName;
 	}
 	public int getOccupants()
 	{
@@ -142,6 +184,11 @@ public class RegularRoom extends Room
 	}
 	public void setRoomNumber(int num)
 	{
+		while(num < 0)
+		{
+			System.out.println("Reenter the room number you would wish to assign the room.");
+			System.out.print("The room number must be positive: ");
+		}
 		roomNum = num;
 	}
 	public int getRoomNumber()
