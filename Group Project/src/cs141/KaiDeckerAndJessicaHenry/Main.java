@@ -1,6 +1,8 @@
 package cs141.KaiDeckerAndJessicaHenry;
 import java.util.*;
 //Name: Jessica Henry
+// Class: Main
+//
 //Description: This is our main which gets the users inputs and choices and calls the hotel manager 
 //It makes it so the rest of our code can work and is nicer 
 
