@@ -29,6 +29,7 @@ public class Main {
 			//This is the menu 
 			
 			choice = scnr.nextInt();
+			scnr.nextLine();
 			//This gets the users input
 			
 			switch(choice){
