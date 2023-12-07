@@ -113,14 +113,16 @@ public class HotelManager {
 		System.out.println("There are " + luxRoom + " available luxury rooms");
 	}
 	
-	public void removeRegRoom(int x) {
-		regular.remove(x);
+	public void removeRegRoom() {
+		regular.remove(regRoom);
 		RegularRoom.removeRoom();
+		regRoom--;
 	}
 	
-	public void removeLuxRoom(int x) {
-		luxury.remove(x);
+	public void removeLuxRoom() {
+		luxury.remove(luxRoom);
 		LuxuryRoom.removeRoom();
+		luxRoom--;
 	}
 	
 	public void addRegRoom() {
