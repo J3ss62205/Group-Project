@@ -222,6 +222,7 @@ public class LuxuryRoom {
 	
 	public static void removeRoom() 
 	{
+		// Remove 1 from the total amount of rooms of this class available.
 		numRooms--;
 	}
 	public void printOpen()
