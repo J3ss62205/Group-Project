@@ -3,6 +3,8 @@
 //	Class name: RegularRoom.
 //
 //	Description: The RegularRoom defines the class of regular room used in the project.
+//	The class uses inheritance and error handling to provide a class that can be used in
+//	the algorithm.
 //
 ////
 /**
@@ -18,35 +20,41 @@ public class RegularRoom extends Room
 {
 	Scanner scnr = new Scanner(System.in);
 
+	// Enumeration so that these can be used to allow a more readable menu in the update method.
 	enum menu {
 		name, occupant, all;
 	}
 
 	// Variables for use in project.
-	String roomName; // name for the room
-	final String roomType = "luxury"; // 
-	int occupants = 0;
-	boolean booked = false;
-	static int numRooms = 0;
-	boolean error = false;
-	int roomNumber = 0;
+	
+	String roomName; // ClientsName for the room.
+	final String roomType = "regular";
+	int occupants = 0; // Number of people in room.
+	boolean booked = false; // Store whether the room is booked or not.
+	static int numRooms = 0; // Store the amount of rooms created.
+	int roomNumber = 0; // Store the room number for the room.
 	
 
+	// Constructor
+	
 	public RegularRoom()
 	{
-		roomName = "None";
+	// assign values to the room upon creation
+		
+		roomName = "None"; // None means that there is no person in the room. 
 		occupants = 0;		
 		numRooms++;
 		roomNumber = numRooms;
 	}
 
+	// Methods
+	
 	public void createBooking(String name, int occ)
 	{
 		// Set values for variables.
 		
 		roomName = name;
 		occupants = occ;
-		error = false;
 		booked = true;
 	}
 
@@ -66,106 +74,110 @@ public class RegularRoom extends Room
 		System.out.println("Enter 2 to update the room's number of occupants.");
 		System.out.println("Enter 3 to update all of the room's information");
 		
-		int i = scnr.nextInt();
+		// Take in the choice to be used in menu.
+		int choice = scnr.nextInt();
 		scnr.nextLine();
 		
-		if (i == menu.name.ordinal()+ 1)
+		if (choice == menu.name.ordinal()+ 1)
 		{
 			try {
 				System.out.print("Enter the new name for the room: ");
-			roomName = scnr.next();
-				error = false;
+			roomName = scnr.nextLine();
+			System.out.println("");
 			}
 			catch (Exception e)
 			{
-				error = true;
-				System.out.println("\nThe name entered has incorrect values.\n");					
+				System.out.println("\nThe name entered has incorrect values.\n");
 			}
 		}
-		else if (i == menu.occupant.ordinal() + 1)
+		else if (choice == menu.occupant.ordinal() + 1)
 		{ 
 				
 			try {
-				System.out.print("Enter the new amount of occupants for the room: ");
 				occupants = scnr.nextInt();
 				scnr.nextLine();
-				error = false;
+				while(occupants < 0)
+				{
+					// While the number of occupants in the room is incorrect then get the data again.
+					System.out.println("Reenter the number of occupants you would wish to assign the room.");
+					System.out.print("The room number must be positive: ");
+					occupants = scnr.nextInt();
+					scnr.nextLine();
+				}
 			}
-			catch (Exception e)
+			catch(Exception e)
 			{
-				error = true;
-				System.out.println("\nThe number of occupants entered has incorrect values.\n");
+				// If the input is incorrect tell the User.
+				System.out.println("\nThe value entered for the room number was incorrect.\n");
 			}
 		}
-		else if (i == menu.all.ordinal() + 1)
+		else if (choice == menu.all.ordinal() + 1)
 		{
-			try {
-				System.out.print("Enter the new name for the room: ");
-				roomName = scnr.nextLine();
-				error = false;
-			}
-			catch (Exception e)
-			{
-			error = true;
-			System.out.println("\nThe name entered has incorrect values.\n");
-			}
-				
-			
-							
+			// Try to set the new name of the room.
 			try {
 				occupants = scnr.nextInt();
 				scnr.nextLine();
-				error = false;
+				while(occupants < 0)
+				{
+					// While the number of occupants in the room is incorrect then get the data again.
+					System.out.println("Reenter the number of occupants you would wish to assign the room.");
+					System.out.print("The room number must be positive: ");
+					occupants = scnr.nextInt();
+					scnr.nextLine();
+				}
+			}
+			catch(Exception e)
+			{
+				// If the input is incorrect tell the User.
+				System.out.println("\nThe value entered for the room number was incorrect.\n");
+			}
+			
+			// Try to set the number of occupants in the room.
+			try {
+				occupants = scnr.nextInt();
+				scnr.nextLine();
+				System.out.println("");
 				}
 			catch (Exception e)
 			{
-				error = true;
+				// If there is an error caught output 
 				System.out.println("The number of occupants input has incorrect values.");
 			}
 		}
 		
 		
 	}
-	public boolean paid()
+	// Print the room's information.
+	public void print()
 	{
-		 System.out.print("Did the client pay: (Y/N)");
-		 String pay = scnr.next();
-		 while(!pay.equalsIgnoreCase("y") || !pay.equalsIgnoreCase("n"))
-		 {
-			 System.out.print("User input is not acceptable.\nRe-enter(Y/N): ");
-			 pay = scnr.next();
-		 }
-		 try {
-			 if (pay.equalsIgnoreCase("y"))
-			 {
-				 return true;
-			 }
-			 else if (pay.equalsIgnoreCase("n"))
-			 {
-				 return false;
-			 }
-			 else
-			 {
-				 System.out.println("The value input was incorrect.");
-				 return false;
-			 }
-		 }
-		 catch(Exception e)
-		 {
-			 System.out.println("Error. Incorrect data entered");
-			 return false;
-		 }
+		// Display information about the room.
+		System.out.println("\n***********************************");
+		System.out.println("The name of the room is: " + roomName + '.');
+		System.out.println("The section of the hotel is: " + roomType);
+		System.out.println("The room number is: " + roomNumber + '.');
+		System.out.println("The number of occupants in the room is: " + occupants + '.');
+		System.out.println("\n***********************************");
 	}
-	
-	
+	// Print the room's information only if the name is "None" which signifies an open room. 
+	public void printOpen()
+	{
+		if(this.booked == false)
+		{
+			this.print();
+		}
+	}
+
+	// Setter/Getters
 	public void setAvailability(boolean bool)
 	{
 		booked = bool;
 	}
+	
 	public boolean getAvailability()
 	{
 		return booked;
 	}
+	
 	public void setName(String name)
 	{
 		try {
@@ -173,32 +185,46 @@ public class RegularRoom extends Room
 		}
 		catch(Exception e)
 		{
+			// If the input is incorrect then tell the user.
 			System.out.println("\nThe value entered is incorrect.\n");
 		}
 	}
+	
 	public void setOccupants(int occ)
 	{
-		while(occ < 0)
-		{
-			System.out.println("Reenter the number of occupants you would wish to assign the room.");
-			System.out.print("The room number must be positive: ");
-			occ = scnr.nextInt();
-			scnr.nextLine();
+		try {
+			while(occ < 0)
+			{
+				// While the number of occupants in the room is incorrect then get the data again.
+				System.out.println("Reenter the number of occupants you would wish to assign the room.");
+				System.out.print("The room number must be positive: ");
+				occ = scnr.nextInt();
+				scnr.nextLine();
+			}
+			occupants = occ;
 		}
-		occupants = occ;
+		catch(Exception e)
+		{
+			// If the input is incorrect tell the User.
+			System.out.println("\nThe value entered for the room number was incorrect.\n");
+		}
 	}
+	
 	public String getName()
 	{
 		return roomName;
 	}
+	
 	public int getOccupants()
 	{
 		return occupants;
 	}
+	
 	public void setRoomNumber(int num)
 	{
+		// If a room number needs to be manually set try.
 		try {
-			
+			// While the number given is negative have the user re-enter it.
 		while(num < 0)
 		{
 			System.out.println("Re-enter the room number you would wish to assign the room.");
@@ -210,41 +236,26 @@ public class RegularRoom extends Room
 		}
 		catch(Exception e)
 		{
+			// If the input is incorrect tell the User.
 			System.out.println("\nThe value entered for the room number was incorrect.\n");
 		}
 	
 	}
+	
 	public String getRoomName()
 	{
 		return roomName;
 	}
+	
 	public int getRoomNumber()
 	{
 		return roomNumber;
 	} 
-	public void print()
-	{
-		// Display information about the room.
-		System.out.println("\n***********************************");
-		System.out.println("The name of the room is: " + roomName + '.');
-		System.out.println("The section of the hotel is: " + roomType);
-		System.out.println("The room number is: " + roomNumber + '.');
-		System.out.println("The number of occupants in the room is: " + occupants + '.');
-		System.out.println("\n***********************************");
-	}
 	
 	public static void removeRoom() 
 	{
 		// Remove 1 from the total amount of rooms of this class available.
 		numRooms--;
 	}
-	public void printOpen()
-	{
-		if(roomName.equals("None"))
-		{
-			System.out.println("\n***********************************");
-			this.print();
-			System.out.println("\n***********************************");
-		}
-	}
+	
 }
