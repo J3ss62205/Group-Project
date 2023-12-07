@@ -215,11 +215,20 @@ public class LuxuryRoom {
 	} 
 	public void print()
 	{
+		// Display information about the room.
+		System.out.println("\n***********************************");
 		System.out.println("The name of the room is: " + roomName + '.');
+		System.out.println("The section of the hotel is: " + roomType);
 		System.out.println("The room number is: " + roomNumber + '.');
 		System.out.println("The number of occupants in the room is: " + occupants + '.');
+		System.out.println("\n***********************************");
 	}
 	
+	private String getRoomName() {
+		// TODO Auto-generated method stub
+		return roomName;
+	}
+
 	public static void removeRoom() 
 	{
 		// Remove 1 from the total amount of rooms of this class available.
@@ -227,7 +236,7 @@ public class LuxuryRoom {
 	}
 	public void printOpen()
 	{
-		if(roomName.equals(""))
+		if(roomName.equals("None"))
 		{
 			System.out.println("\n***********************************");
 			this.print();
@@ -235,3 +244,5 @@ public class LuxuryRoom {
 		}
 	}
 }
+
+
