@@ -1,21 +1,22 @@
 ////
 //	Name: Kai Decker
-//	Class name: RegularRoom.
+//	Class name: LuxuryRoom.
 //
-//	Description: The RegularRoom defines the class of regular room used in the project.
+//	Description: The luxuryRoom defines the class of luxury room used in the project.
 //
 ////
 /**
  * 
  */
 package cs141.KaiDeckerAndJessicaHenry;
+
 import java.util.Scanner;
 
 /**
  * 
  */
-public class RegularRoom extends Room
-{
+public class LuxuryRoom {
+		
 	Scanner scnr = new Scanner(System.in);
 
 	enum menu {
@@ -32,7 +33,7 @@ public class RegularRoom extends Room
 	int roomNumber = 0;
 	
 
-	public RegularRoom()
+	public LuxuryRoom()
 	{
 		roomName = "";
 		occupants = 0;		
