@@ -11,7 +11,6 @@
 package cs141.KaiDeckerAndJessicaHenry;
 import java.util.Scanner;
 
-
 /**
  * 
  */
@@ -25,17 +24,20 @@ public class RegularRoom extends Room
 
 	// Variables for use in project.
 	String roomName; // name for the room
-	final String roomType = "Regular"; // 
-	int occupants;
+	final String roomType = "luxury"; // 
+	int occupants = 0;
 	boolean booked = false;
-	static int roomNum = 0;
+	static int numRooms = 0;
 	boolean error = false;
+	int roomNumber = 0;
+	
 
 	public RegularRoom()
 	{
 		roomName = "";
-		occupants = 0;
-		roomNum++;
+		occupants = 0;		
+		numRooms++;
+		roomNumber = numRooms;
 	}
 
 	public void createBooking(String name, int occ)
@@ -66,7 +68,7 @@ public class RegularRoom extends Room
 		
 		int i = scnr.nextInt();
 		
-		if (i == menu.name.ordinal() + 1)
+		if (i == menu.name.ordinal()+ 1)
 		{
 			try {
 				System.out.print("Enter the new name for the room: ");
@@ -163,7 +165,13 @@ public class RegularRoom extends Room
 	}
 	public void setName(String name)
 	{
-		roomName = name;
+		try {
+			roomName = name;
+		}
+		catch(Exception e)
+		{
+			System.out.println("\nThe value entered is incorrect.\n");
+		}
 	}
 	public void setOccupants(int occ)
 	{
@@ -171,6 +179,7 @@ public class RegularRoom extends Room
 		{
 			System.out.println("Reenter the number of occupants you would wish to assign the room.");
 			System.out.print("The room number must be positive: ");
+			occ = scnr.nextInt();
 		}
 		occupants = occ;
 	}
@@ -184,15 +193,43 @@ public class RegularRoom extends Room
 	}
 	public void setRoomNumber(int num)
 	{
+		try {
+			
 		while(num < 0)
 		{
-			System.out.println("Reenter the room number you would wish to assign the room.");
+			System.out.println("Re-enter the room number you would wish to assign the room.");
 			System.out.print("The room number must be positive: ");
+			num = scnr.nextInt();
 		}
-		roomNum = num;
+		roomNumber = num;
+		}
+		catch(Exception e)
+		{
+			System.out.println("\nThe value entered for the room number was incorrect.\n");
+		}
 	}
 	public int getRoomNumber()
 	{
-		return roomNum;
+		return roomNumber;
+	} 
+	public void print()
+	{
+		System.out.println("The name of the room is: " + roomName + '.');
+		System.out.println("The room number is: " + roomNumber + '.');
+		System.out.println("The number of occupants in the room is: " + occupants + '.');
+	}
+	
+	public static void removeRoom() 
+	{
+		numRooms--;
+	}
+	public void printOpen()
+	{
+		if(roomName.equals(""))
+		{
+			System.out.println("\n***********************************");
+			this.print();
+			System.out.println("\n***********************************");
+		}
 	}
 }
