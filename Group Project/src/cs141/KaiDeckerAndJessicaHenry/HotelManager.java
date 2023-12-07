@@ -137,12 +137,12 @@ public class HotelManager {
 		System.out.println("");
 		System.out.println("The Following Are Open Regular Rooms: ");
 		for (RegularRoom i : regular) {
-			regular.printOpen();
+			i.printOpen();
 		}
 		System.out.println("");
 		System.out.println("The Following Are Open Luxury Rooms: ");
 		for (LuxuryRoom i : luxury) {
-			luxury.printOpen();
+			i.printOpen();
 		}
 	}
 	
@@ -150,12 +150,12 @@ public class HotelManager {
 		System.out.println("");
 		System.out.println("The Following Are Regular Rooms: ");
 		for (RegularRoom i : regular) {
-			regular.print();
+			i.print();
 		}
 		System.out.println("");
 		System.out.println("The Following Are Luxury Rooms: ");
 		for (LuxuryRoom i : luxury) {
-			luxury.print();
+			i.print();
 		}
 		//This will call the print methods for both types of rooms and print them!
 	}
