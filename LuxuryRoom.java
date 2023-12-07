@@ -68,6 +68,7 @@ public class LuxuryRoom {
 		System.out.println("Enter 3 to update all of the room's information");
 		
 		int i = scnr.nextInt();
+		scnr.nextLine();
 		
 		if (i == menu.name.ordinal()+ 1)
 		{
@@ -88,6 +89,7 @@ public class LuxuryRoom {
 			try {
 				System.out.print("Enter the new amount of occupants for the room: ");
 				occupants = scnr.nextInt();
+				scnr.nextLine();
 				error = false;
 			}
 			catch (Exception e)
@@ -101,6 +103,7 @@ public class LuxuryRoom {
 			try {
 				System.out.print("Enter the new name for the room: ");
 				roomName = scnr.nextLine();
+				scnr.nextLine();
 				error = false;
 			}
 			catch (Exception e)
@@ -113,6 +116,7 @@ public class LuxuryRoom {
 							
 			try {
 				occupants = scnr.nextInt();
+				scnr.nextLine();
 				error = false;
 				}
 			catch (Exception e)
@@ -127,11 +131,11 @@ public class LuxuryRoom {
 	public boolean paid()
 	{
 		 System.out.print("Did the client pay: (Y/N)");
-		 String pay = scnr.next();
+		 String pay = scnr.nextLine();
 		 while(!pay.equalsIgnoreCase("y") || !pay.equalsIgnoreCase("n"))
 		 {
 			 System.out.print("User input is not acceptable.\nRe-enter(Y/N): ");
-			 pay = scnr.next();
+			 pay = scnr.nextLine();
 		 }
 		 try {
 			 if (pay.equalsIgnoreCase("y"))
@@ -181,6 +185,7 @@ public class LuxuryRoom {
 			System.out.println("Reenter the number of occupants you would wish to assign the room.");
 			System.out.print("The room number must be positive: ");
 			occ = scnr.nextInt();
+			scnr.nextLine();
 		}
 		occupants = occ;
 	}
@@ -201,6 +206,7 @@ public class LuxuryRoom {
 			System.out.println("Re-enter the room number you would wish to assign the room.");
 			System.out.print("The room number must be positive: ");
 			num = scnr.nextInt();
+			scnr.nextLine();
 		}
 		roomNumber = num;
 		}
