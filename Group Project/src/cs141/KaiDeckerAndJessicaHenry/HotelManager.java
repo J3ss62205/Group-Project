@@ -115,12 +115,12 @@ public class HotelManager {
 	
 	public void removeRegRoom(int x) {
 		regular.remove(x);
-		regular.removeRoom();
+		RegularRoom.removeRoom();
 	}
 	
 	public void removeLuxRoom(int x) {
 		luxury.remove(x);
-		luxury.removeRoom();
+		LuxuryRoom.removeRoom();
 	}
 	
 	public void addRegRoom() {
