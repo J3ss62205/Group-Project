@@ -11,9 +11,10 @@ public abstract class Room {
 	abstract void createBooking(String name, int occ);
 	abstract void removeBooking();
 	abstract void updateRoom();
-//	abstract void findPerson();
-//	abstract void checkAvailable();
-//	abstract void removeRoom();
-//	abstract void createRoom();
+	abstract void print();
+	abstract void printOpen();
+	abstract boolean paid();
+	abstract void removeRoom();
+
 	
 }
