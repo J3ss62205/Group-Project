@@ -14,6 +14,8 @@ package cs141.KaiDeckerAndJessicaHenry;
 
 import java.util.Scanner;
 
+import cs141.KaiDeckerAndJessicaHenry.RegularRoom.menu;
+
 
 
 /**
@@ -82,11 +84,12 @@ public class LuxuryRoom {
 		{
 			try {
 				System.out.print("Enter the new name for the room: ");
-			roomName = scnr.next();
+			roomName = scnr.nextLine();
+			System.out.println("");
 			}
 			catch (Exception e)
 			{
-				System.out.println("\nThe name entered has incorrect values.\n");					
+				System.out.println("\nThe name entered has incorrect values.\n");
 			}
 		}
 		else if (choice == menu.occupant.ordinal() + 1)
@@ -96,6 +99,7 @@ public class LuxuryRoom {
 				System.out.print("Enter the new amount of occupants for the room: ");
 				occupants = scnr.nextInt();
 				scnr.nextLine();
+				System.out.println("");
 			}
 			catch (Exception e)
 			{
@@ -110,6 +114,7 @@ public class LuxuryRoom {
 				
 				System.out.print("Enter the new name for the room: ");
 				roomName = scnr.nextLine();
+				System.out.println("");
 			}
 			catch (Exception e)
 			{
@@ -120,6 +125,7 @@ public class LuxuryRoom {
 			try {
 				occupants = scnr.nextInt();
 				scnr.nextLine();
+				System.out.println("");
 				}
 			catch (Exception e)
 			{
