@@ -137,22 +137,13 @@ public class Main {
 					scnr.nextLine();
 					
 					if (room == 1) {
-						System.out.println("What is the name under the booking: ");
-						String name1 = scnr.nextLine();
-						scnr.next();
-						//This gets their name
 						
-						int index = hotel.getRegIndex(name1);
-						hotel.removeRegRoom(index);
+						//This removes last room.
+						hotel.removeRegRoom();
 					}
 					else if (room == 2) {
-						System.out.println("What is the name under the booking: ");
-						String name2 = scnr.nextLine();
-						scnr.next();
-						//This gets their name
-						
-						int index = hotel.getLuxIndex(name2);
-						hotel.removeLuxRoom(index);
+						//This removes last room.
+						hotel.removeLuxRoom();
 					}
 					break;
 					
