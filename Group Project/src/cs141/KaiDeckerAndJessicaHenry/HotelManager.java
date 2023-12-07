@@ -53,15 +53,26 @@ public class HotelManager {
 	}
 	
 	public void RegBook(String newName, int people) {
-		regular.get(num).createBooking(newName, people);
-		num++;
-		regRoom--;
+		if(!(regRoom >= regular.size())) {
+			regular.get(num).createBooking(newName, people);
+			num++;
+			regRoom--;
+		}
+		else {
+			System.out.println("The rooms are full and you can not make a booking");
+		}
+		
 	}//This makes it so we can book regular rooms 
 	
 	public void LuxBook(String newName, int people) {
-		luxury.get(num1).createBooking(newName, people);
-		num1++;
-		luxRoom--;
+		if(!(luxRoom >= luxury.size())) {
+			luxury.get(num1).createBooking(newName, people);
+			num1++;
+			luxRoom--;
+		}
+		else {
+			System.out.println("The rooms are full and you can not make a booking");
+		}
 	}//This makes it so we can book luxury rooms
 	
 	public void removeRegBook(int i) {
