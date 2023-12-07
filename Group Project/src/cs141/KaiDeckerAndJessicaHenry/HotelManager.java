@@ -109,8 +109,10 @@ public class HotelManager {
 	}
 	
 	public void checkAvailbity() {
+		System.out.println("*************************************************");
 		System.out.println("There are " + regRoom + " available regular rooms");
 		System.out.println("There are " + luxRoom + " available luxury rooms");
+		System.out.println("*************************************************");
 	}
 	
 	public void removeRegRoom() {
