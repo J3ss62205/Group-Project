@@ -86,17 +86,17 @@ public class HotelManager {
 	public void findSomeone(String newName) {
 		for (RegularRoom i : regular) {
 			if (i.getName().equals(newName)){
-				System.out.println();
-				System.out.println(newName + " is section REGULAR and in the room number " + i);
-				System.out.println();
+				System.out.println("");
+				System.out.println("This person is section REGULAR");
+				System.out.println("");
 				found = true;
 			}
 		}
 		for (LuxuryRoom i : luxury) {
 			if (i.getName().equals(newName)){
-				System.out.println();
-				System.out.println(newName +" is section LUXURY and in the room number " + i);
-				System.out.println();
+				System.out.println("");
+				System.out.println("This person is section LUXURY");
+				System.out.println("");
 				found = true;
 			}
 		}
