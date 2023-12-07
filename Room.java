@@ -14,7 +14,6 @@ public abstract class Room {
 	abstract void print();
 	abstract void printOpen();
 	abstract boolean paid();
-	abstract void removeRoom();
 
 	
 }
