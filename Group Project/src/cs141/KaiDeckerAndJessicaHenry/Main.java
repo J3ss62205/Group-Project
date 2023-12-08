@@ -1,196 +1,252 @@
-package cs141.KaiDeckerAndJessicaHenry;
-import java.util.*;
-//Name: Jessica Henry
-// Class: Main
+////
+//	Name: Kai Decker
+//	Class name: LuxuryRoom.
 //
-//Description: This is our main which gets the users inputs and choices and calls the hotel manager 
-//It makes it so the rest of our code can work and is nicer 
+//	Description: The LuxuryRoom defines the class of luxury room used in the project.
+//	The class uses inheritance and error handling to provide a class that can be used in
+//	the algorithm.
+//
+////
+/**
+ * 
+ */
+package cs141.KaiDeckerAndJessicaHenry;
 
-public class Main {
+import java.util.Scanner;
 
-	public static void main(String[] args) {
-		Scanner scnr = new Scanner(System.in);
-		
-		int choice;
-		int room;
-		//Variables yayyyyyyyyy
-		
-		HotelManager hotel = new HotelManager();
-		//This will create an object and call the constructor 
-		
-		do {
-			System.out.println("0: Create a Booking");
-			System.out.println("1: Remove a Booking");
-			System.out.println("2: Update Rooms Information");
-			System.out.println("3: Find Someone in the System");
-			System.out.println("4: Check Availability");
-			System.out.println("5: Remove a Room");
-			System.out.println("6: Add a Room");
-			System.out.println("7: Print Out All or Open Rooms");
-			System.out.println("8: Quit");
-			//This is the menu 
-			
-			choice = scnr.nextInt();
-			scnr.nextLine();
-			if(choice > 8 || choice < 0) {
-				System.out.println("Please enter a vaild number");
-				choice = scnr.nextInt();
-				scnr.nextLine();
-			}//This makes it so that you enter a 0-8 number 
-			//This gets the users input
-			
-			switch(choice){
-				case 0:
-					System.out.println("Would you like a luxury or a regular room?");
-					System.out.println("1: Regular");
-					System.out.println("2: Luxury");
-					room = scnr.nextInt();
-					scnr.nextLine();
-					//The user will choose what room type they want 
-					
-					if (room == 1) {
-						System.out.println("What is the name you'd like to book with: ");
-						String name = scnr.nextLine();
-//						System.out.println(name);
-						System.out.println("What is the number of people in your room: ");
-						int people = scnr.nextInt();
-						hotel.RegBook(name, people);
-						//This calls the regular room method in the hotel manager 
-					}
-					else if (room == 2) {
-						System.out.println("What is the name you'd like to book with: ");
-						String name = scnr.nextLine();
-						System.out.println("What is the number of people in your room: ");
-						int people = scnr.nextInt();
-						hotel.LuxBook(name, people);
-						//This calls the luxury room method in the hotel manager 
-					}
-					break;
-					
-				case 1:
-					System.out.println("Was your booking a luxury or a regular room?");
-					System.out.println("1: Regular");
-					System.out.println("2: Luxury");
-					room = scnr.nextInt();
-					scnr.nextLine();
-					//The user will choose what room type they booked with 
-					
-					if (room == 1) {
-						System.out.println("What is the name you booked with: ");
-						String name = scnr.nextLine();
-						//This gets their name
+import cs141.KaiDeckerAndJessicaHenry.RegularRoom.menu;
 
-						int index = hotel.getRegIndex(name);
-						hotel.removeRegBook(index);
-						//This calls the regular room method in the hotel manager and removes their booking
-					}
-					else if (room == 2) {
-						System.out.println("What is the name you booked with: ");
-						String name = scnr.nextLine();
-						scnr.next();
-						//This gets their name
-						
-						int index = hotel.getLuxIndex(name);
-						hotel.removeLuxBook(index);
-						//This calls the luxury room method in the hotel manager and removes their booking
-					}
-					break;
-					
-				case 2:
-					System.out.println("Was your booking a luxury or a regular room?");
-					System.out.println("1: Regular");
-					System.out.println("2: Luxury");
-					room = scnr.nextInt();
-					scnr.nextLine();
-					
-					if (room == 1) {
-						System.out.println("What is the name you booked with: ");
-						String name = scnr.nextLine();
-						scnr.next();
-						//This gets their name
-						
-						int index = hotel.getRegIndex(name);
-						hotel.updateRegRoom(index);
-						//This calls the method
-					}
-					else if (room == 2) {
-						System.out.println("What is the name you booked with: ");
-						String name = scnr.nextLine();
-						scnr.next();
-						//This gets their name
-						
-						int index = hotel.getLuxIndex(name);
-						hotel.updateLuxRoom(index);
-						//Once again calls the method
-					}
-					break;
-					
-				case 3:
-					System.out.println("What is the name of the person you're looking for: ");
-					String name = scnr.nextLine();
-					
-					hotel.findSomeone(name);
-					//This can find someone in the system
-					
-					break;
-				case 4:
-					hotel.checkAvailbity();
-					//This prints out the available rooms
-					break;
-				case 5:
-					System.out.println("Was your booking a luxury or a regular room?");
-					System.out.println("1: Regular");
-					System.out.println("2: Luxury");
-					room = scnr.nextInt();
-					scnr.nextLine();
-					
-					if (room == 1) {
-						
-						//This removes last room.
-						hotel.removeRegRoom();
-					}
-					else if (room == 2) {
-						//This removes last room.
-						hotel.removeLuxRoom();
-					}
-					break;
-					
-				case 6:
-					System.out.println("Would you like to add a luxury or a regular room?");
-					System.out.println("1: Regular");
-					System.out.println("2: Luxury");
-					room = scnr.nextInt();
-					scnr.nextLine();
-					
-					if (room == 1) {						
-						hotel.addRegRoom();
-						//This'll add a regular room
-					}
-					else if (room == 2) {
-						hotel.addLuxRoom();
-						//This'll add a luxury room 
-					}
-					
-					break;
-				case 7:
-					System.out.println("Would you like to print out all or open rooms?");
-					System.out.println("1: All");
-					System.out.println("2: Open");
-					room = scnr.nextInt();
-					scnr.nextLine();
-					
-					if (room == 1) {						
-						hotel.printAll();
-						//This calls the print all method 
-					}
-					else if (room == 2) {
-						hotel.printOpen();
-						//This calls the printing open rooms method 
-					}
-					break;
-			}
-			
-		} while (choice != 8); //If they type 8 they will be out of loop 
+
+
+/**
+ * 
+ */
+public class LuxuryRoom {
+		
+	Scanner scnr = new Scanner(System.in);
+
+	// Enumeration so that these can be used to allow a more readable menu in the update method.
+	enum menu {
+		name, occupant, all;
 	}
 
+	// Variables for use in project.
+	
+	String roomName; // ClientsName for the room.
+	final String roomType = "regular";
+	int occupants = 0; // Number of people in room.
+	boolean booked = false; // Store whether the room is booked or not.
+	static int numRooms = 0; // Store the amount of rooms created.
+	int roomNumber = 0; // Store the room number for the room.
+
+	public LuxuryRoom()
+	{
+		// assign values to the room upon creation
+		
+		roomName = "None"; // None means that there is no person in the room. 
+		occupants = 0;		
+		numRooms++;
+		roomNumber = numRooms;
+	}
+
+	// Methods
+	
+	public void createBooking(String name, int occ)
+	{
+		// Set values for variables.
+		
+		roomName = name;
+		occupants = occ;
+		booked = true;
+	}
+
+	public void removeBooking()
+	{
+		// Set values for variables to empty.
+		booked = false;
+		roomName = "None";
+		occupants = 0;
+	}
+
+	public void updateRoom()
+	{
+		// Menu for updating
+		System.out.println("Action Menu");
+		System.out.println("Enter 1 to update the room's name.");
+		System.out.println("Enter 2 to update the room's number of occupants.");
+		System.out.println("Enter 3 to update all of the room's information");
+		
+		// Take in the choice to be used in menu.
+		int choice = scnr.nextInt();
+		scnr.nextLine();
+		
+		if (choice == menu.name.ordinal()+ 1)
+		{
+			try {
+				System.out.print("Enter the new name for the room: ");
+			roomName = scnr.nextLine();
+			System.out.println("");
+			}
+			catch (Exception e)
+			{
+				System.out.println("\nThe name entered has incorrect values.\n");
+			}
+		}
+		else if (choice == menu.occupant.ordinal() + 1)
+		{ 
+				
+			try {
+				System.out.print("Enter the new amount of occupants for the room: ");
+				occupants = scnr.nextInt();
+				scnr.nextLine();
+				System.out.println("");
+			}
+			catch (Exception e)
+			{
+				
+				System.out.println("\nThe number of occupants entered has incorrect values.\n");
+			}
+		}
+		else if (choice == menu.all.ordinal() + 1)
+		{
+			// Try to set the new name of the room.
+			try {
+				
+				System.out.print("Enter the new name for the room: ");
+				roomName = scnr.nextLine();
+				System.out.println("");
+			}
+			catch (Exception e)
+			{
+			System.out.println("\nThe name entered has incorrect values.\n");
+			}	
+			
+			// Try to set the number of occupants in the room.
+			try {
+				occupants = scnr.nextInt();
+				scnr.nextLine();
+				System.out.println("");
+				}
+			catch (Exception e)
+			{
+				// If there is an error caught output 
+				System.out.println("The number of occupants input has incorrect values.");
+			}
+		}
+		
+		
+	}
+	// Print the room's information.
+	public void print()
+	{
+		// Display information about the room.
+		System.out.println("\n***********************************");
+		System.out.println("The name of the room is: " + roomName + '.');
+		System.out.println("The section of the hotel is: " + roomType);
+		System.out.println("The room number is: " + roomNumber + '.');
+		System.out.println("The number of occupants in the room is: " + occupants + '.');
+		System.out.println("\n***********************************");
+	}
+	// Print the room's information only if the name is "None" which signifies an open room. 
+	public void printOpen()
+	{
+		if(this.booked == false)
+		{
+			System.out.println("\n***********************************");
+			this.print();
+			System.out.println("\n***********************************");
+		}
+	}
+
+	// Setter/Getters
+	public void setAvailability(boolean bool)
+	{
+		booked = bool;
+	}
+	
+	public boolean getAvailability()
+	{
+		return booked;
+	}
+	
+	public void setName(String name)
+	{
+		try {
+			roomName = name;
+		}
+		catch(Exception e)
+		{
+			// If the input is incorrect then tell the user.
+			System.out.println("\nThe value entered is incorrect.\n");
+		}
+	}
+	
+	public void setOccupants(int occ)
+	{
+		try {
+			while(occ < 0)
+			{
+				// While the number of occupants in the room is incorrect then get the data again.
+				System.out.println("Reenter the number of occupants you would wish to assign the room.");
+				System.out.print("The room number must be positive: ");
+				occ = scnr.nextInt();
+				scnr.nextLine();
+			}
+			occupants = occ;
+		}
+		catch(Exception e)
+		{
+			// If the input is incorrect tell the User.
+			System.out.println("\nThe value entered for the room number was incorrect.\n");
+		}
+	}
+	
+	public String getName()
+	{
+		return roomName;
+	}
+	
+	public int getOccupants()
+	{
+		return occupants;
+	}
+	
+	public void setRoomNumber(int num)
+	{
+		// If a room number needs to be manually set try.
+		try {
+			// While the number given is negative have the user re-enter it.
+		while(num < 0)
+		{
+			System.out.println("Re-enter the room number you would wish to assign the room.");
+			System.out.print("The room number must be positive: ");
+			num = scnr.nextInt();
+			scnr.nextLine();
+		}
+		roomNumber = num;
+		}
+		catch(Exception e)
+		{
+			// If the input is incorrect tell the User.
+			System.out.println("\nThe value entered for the room number was incorrect.\n");
+		}
+	
+	}
+	
+	public String getRoomName()
+	{
+		return roomName;
+	}
+	
+	public int getRoomNumber()
+	{
+		return roomNumber;
+	} 
+	
+	public static void removeRoom() 
+	{
+		// Remove 1 from the total amount of rooms of this class available.
+		numRooms--;
+	}
+	
 }
