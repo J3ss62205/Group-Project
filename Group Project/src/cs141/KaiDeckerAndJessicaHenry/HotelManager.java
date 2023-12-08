@@ -133,17 +133,17 @@ public class HotelManager {
 		System.out.println("There are " + regRoom + " available regular rooms");
 		System.out.println("There are " + luxRoom + " available luxury rooms");
 		System.out.println("*************************************************");
-		//This will tell you the avaiable rooms
+		//This will tell you the available rooms
 	}
 	
 	public void removeRegRoom() {
-		regular.remove(regRoom);
+		regular.remove((regular.size()) - 1);
 		RegularRoom.removeRoom();
 		regRoom--;
 	}//This will remove a room for the regular array list
 	
 	public void removeLuxRoom() {
-		luxury.remove(luxRoom);
+		luxury.remove((luxury.size()) - 1);
 		LuxuryRoom.removeRoom();
 		luxRoom--;
 	}//This will remove a room for the luxury array list
